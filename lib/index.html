@@ -14,9 +14,8 @@
   <script src="./gameView.js"></script>
   <script>
     var canvasEl = document.getElementsByTagName("canvas")[0];
-    var test = new Asteroids.GameView(canvasEl);
-    console.log(test);
-    test.start();
+    var gameView = new Asteroids.GameView(canvasEl);
+    gameView.start();
   </script>
 </body>
 </html>
