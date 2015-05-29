@@ -1,5 +1,10 @@
-canvas#game-canvas {
-  width: 650;
-  height: 650;
-  border: 3px solid black;
+.main {
+  width: 650px;
+  height: 650px;
 }
+/*
+.game-canvas {
+  width: 650px;
+  height: 650px;
+  border: 3px solid black;
+}*/

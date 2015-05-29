@@ -16,10 +16,11 @@
   GameView.prototype.start = function () {
     this.bindKeyHandlers();
     var background = new Image();
+    background.src = '../src/space.jpg'
+
     background.onload = function () {
       this.ctx.drawImage(background, 0, 0);
-    };
-    background.src = '../src/space.jpg'
+    }.bind(this);
 
     window.setInterval((function () {
       this.game.draw(this.ctx, background);
