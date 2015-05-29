@@ -19,7 +19,7 @@
     background.onload = function () {
       this.ctx.drawImage(background, 0, 0);
     };
-    background.src = 'space.jpg'
+    background.src = '../src/space.jpg'
 
     window.setInterval((function () {
       this.game.draw(this.ctx, background);

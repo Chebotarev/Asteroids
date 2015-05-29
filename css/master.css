@@ -1,0 +1,5 @@
+canvas#game-canvas {
+  width: 650;
+  height: 650;
+  border: 3px solid black;
+}

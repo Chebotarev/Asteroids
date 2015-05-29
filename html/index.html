@@ -1,24 +1,20 @@
 <html>
 <head>
-
+  <title>Asteroids</title>
+  <link rel="stylesheet" href="../css/master.css" charset="utf-8">
 </head>
 
 <body>
-  <canvas
-    id="game-canvas"
-    width="650"
-    height="650"
-    style="border: 3px solid black;"
-  ></canvas>
+  <canvas id="game-canvas"></canvas>
 
-  <script src="./keymaster-master/keymaster.js"></script>
-  <script src="./utils.js"></script>
-  <script src="./movingObjects.js"></script>
-  <script src="./asteroid.js"></script>
-  <script src="./ship.js"></script>
-  <script src="./bullet.js"></script>
-  <script src="./game.js"></script>
-  <script src="./gameView.js"></script>
+  <script src="../src/keymaster-master/keymaster.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/movingObjects.js"></script>
+  <script src="../js/asteroid.js"></script>
+  <script src="../js/ship.js"></script>
+  <script src="../js/bullet.js"></script>
+  <script src="../js/game.js"></script>
+  <script src="../js/gameView.js"></script>
   <script>
     var canvasEl = document.getElementsByTagName("canvas")[0];
     var gameView = new Asteroids.GameView(canvasEl);
