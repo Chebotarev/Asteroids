@@ -8,13 +8,16 @@
     window.Asteroids = {};
   }
 
-  var GameView = Asteroids.GameView = function (canvasEl) {
+  var GameView = Asteroids.GameView = function (canvasEl, $menu) {
     this.ctx = canvasEl.getContext("2d");
+    this.$menu = $menu;
     this.game = new Asteroids.Game();
   };
 
   GameView.prototype.start = function () {
     this.bindKeyHandlers();
+    // debugger
+    this.$menu.addClass('hidden');
     var background = new Image();
     background.src = '../src/space.jpg'
 

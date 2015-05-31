@@ -2,16 +2,21 @@
 <head>
   <title>Asteroids</title>
   <link rel="stylesheet" href="../css/master.css" charset="utf-8">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
-  <div class="main">
-    <canvas class="game-canvas" width="650" height="650"></canvas>
+  <div class="viewport group">
+
+    <div class="menu-container">
+      <ul class="menu-buttons"></ul>
+    </div>
+
+    <div class="canvas-container">
+      <canvas class="game-canvas" width="650" height="650"></canvas>
+    </div>
   </div>
 
-  <script src="../src/jquery-2.1.4.js">
-
-  </script>
   <script src="../src/keymaster-master/keymaster.js"></script>
   <script src="../js/utils.js"></script>
   <script src="../js/movingObjects.js"></script>
@@ -20,10 +25,14 @@
   <script src="../js/bullet.js"></script>
   <script src="../js/game.js"></script>
   <script src="../js/gameView.js"></script>
+  <script src="../js/menu.js"></script>
+
+  </script>
   <script>
     var canvasEl = document.getElementsByTagName("canvas")[0];
-    var gameView = new Asteroids.GameView(canvasEl);
-    gameView.start();
+    var $menu = $('div.menu-container');
+    var gameView = new Asteroids.GameView(canvasEl, $menu);
+    $menu.find('ul.menu-buttons').menu(gameView, $menu);
   </script>
 </body>
 </html>
