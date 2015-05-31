@@ -10,23 +10,38 @@
 }
 
 .menu-container {
-  background-color: grey;
+  background-image: url(../src/space.jpg);
   position: relative;
   margin: 0 auto;
   width: inherit;
   height: inherit;
 }
 
-ul.menu-buttons {
+div.menu-container ul.menu-buttons {
   padding: 0;
   position: relative;
+  top: 25%;
 }
 
 ul.menu-buttons li {
   list-style-type: none;
   margin: 0 auto;
+  width: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
-  width: 100px;
+div.menu-button {
+  background-color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+div.menu-button:hover {
+  background-color: red;
+  color: white;
 }
 
 .hidden {

@@ -16,7 +16,7 @@
 
   GameView.prototype.start = function () {
     this.bindKeyHandlers();
-    // debugger
+    // this.captureMouse();
     this.$menu.addClass('hidden');
     var background = new Image();
     background.src = '../src/space.jpg'
@@ -30,6 +30,10 @@
       this.game.step(this.ctx);
     }).bind(this), 1000 / 60)
   };
+
+  // GameView.prototype.captureMouse = function () {
+  //
+  // };
 
   GameView.prototype.bindKeyHandlers = function () {
     var that = this;
