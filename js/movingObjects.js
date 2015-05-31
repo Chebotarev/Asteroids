@@ -32,6 +32,7 @@
    );
 
    ctx.fill();
+   ctx.closePath();
   };
 
   MovingObject.prototype.move = function () {

@@ -14,10 +14,25 @@
     });
   }
 
-  Ship.RADIUS = 5;
+  Ship.RADIUS = 10;
   Ship.COLOR = 'yellow';
 
   Asteroids.Utils.inherits(Ship, Asteroids.MovingObject);
+
+  Ship.prototype.draw = function (ctx) {
+    var x = this.pos[0];
+    var y = this.pos[1];
+    ctx.fillStyle = 'yellow';
+    ctx.beginPath();
+
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + 8, y + 20);
+    ctx.lineTo(x, y + 16);
+    ctx.lineTo(x - 8, y + 20);
+    ctx.fill();
+
+    ctx.closePath();
+  };
 
   Ship.prototype.relocate = function() {
     this.pos = this.game.randomPosition();

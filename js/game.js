@@ -57,7 +57,11 @@
   };
 
   Game.prototype.draw = function (ctx, background) {
-    ctx.clearRect(0, 0, Game.DIM_X + Asteroids.Asteroid.RADIUS, Game.DIM_Y + Asteroids.Asteroid.RADIUS);
+    ctx.clearRect(0, 0,
+      Game.DIM_X + Asteroids.Asteroid.RADIUS,
+      Game.DIM_Y + Asteroids.Asteroid.RADIUS
+    );
+    
     ctx.drawImage(background, 0, 0, Game.DIM_X, Game.DIM_Y);
 
     this.allObjects().forEach(function (arg) {
