@@ -11,7 +11,10 @@
   var Game = Asteroids.Game = function () {
     this.asteroids = [];
     this.initAsteroids();
-    this.ship = new Asteroids.Ship({ pos: [375, 375], game: this });
+    this.ship = new Asteroids.Ship({
+      pos: [375, 375],
+      game: this
+    });
     this.bullets = [];
   };
 
@@ -61,7 +64,7 @@
       Game.DIM_X + Asteroids.Asteroid.RADIUS,
       Game.DIM_Y + Asteroids.Asteroid.RADIUS
     );
-    
+
     ctx.drawImage(background, 0, 0, Game.DIM_X, Game.DIM_Y);
 
     this.allObjects().forEach(function (arg) {
@@ -104,12 +107,10 @@
 
     for (var i = 0; i < remaining; i++) {
       for (var j = 0; j < remaining; j++) {
-        if (i !== j) {
-          if (objects[i].isCollidedWith(objects[j])) {
-            objects[i].collideWith(objects[j]);
-            objects = this.allObjects();
-            remaining = objects.length;
-          }
+        if (i !== j && objects[i].isCollidedWith(objects[j])) {
+          objects[i].collideWith(objects[j]);
+          objects = this.allObjects();
+          remaining = objects.length;
         }
       }
     }
