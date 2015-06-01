@@ -1,4 +1,3 @@
-// This is you! Another MovingObject subclass.
 (function () {
   if (typeof Asteroids === 'undefined') {
     window.Asteroids = {};
@@ -22,7 +21,7 @@
   Ship.prototype.draw = function (ctx) {
     var x = this.pos[0];
     var y = this.pos[1];
-    ctx.fillStyle = 'yellow';
+    ctx.fillStyle = this.color;
     ctx.beginPath();
 
     ctx.moveTo(x, y);

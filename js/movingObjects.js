@@ -13,7 +13,6 @@
     this.color = options.color;
     this.game = options.game;
 
-    this.speed =
     this.isWrappable = true;
     this.game.add(this);
   };
