@@ -1,9 +1,11 @@
-$.Menu = function (el, gameView) {
+$.Menu = function (el, buttons) {
   this.$el = $(el);
-  this.createButton("Start Game", gameView.start.bind(gameView));
-  this.createButton("Options", function () {
-    console.log("Not Implemented!")
-  });
+
+  for (var title in buttons) {
+    if (buttons.hasOwnProperty(title)) {
+      this.createButton(title, buttons[title]);
+    }
+  }
 };
 
 $.Menu.prototype.createButton = function (text, callback) {
@@ -12,8 +14,8 @@ $.Menu.prototype.createButton = function (text, callback) {
   $('<li>').append($button).appendTo(this.$el);
 };
 
-$.fn.menu = function (gameView) {
+$.fn.menu = function (buttons) {
   return this.each(function () {
-    new $.Menu(this, gameView);
+    new $.Menu(this, buttons);
   });
 };

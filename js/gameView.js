@@ -11,7 +11,19 @@
   var GameView = Asteroids.GameView = function (canvasEl, $menu) {
     this.ctx = canvasEl.getContext("2d");
     this.$menu = $menu;
+    this.$buttons = this.$menu.find('ul.menu-buttons')
     this.game = new Asteroids.Game();
+
+    this.createStartMenu();
+  };
+
+  GameView.prototype.createStartMenu = function () {
+    var buttons = {
+      "Start Game": this.start.bind(this),
+      "Options": function () { console.log("Not Implemented!")}
+    };
+
+    this.$buttons.menu(buttons);
   };
 
   GameView.prototype.start = function () {
