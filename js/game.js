@@ -12,7 +12,7 @@
     this.asteroids = [];
     this.initAsteroids();
     this.ship = new Asteroids.Ship({
-      pos: [375, 375],
+      pos: new Asteroids.Coord({x: 375, y: 375}),
       game: this
     });
     this.bullets = [];
@@ -56,7 +56,7 @@
   Game.prototype.randomPosition = function () {
     var x = Math.floor(Math.random() * Game.DIM_X);
     var y = Math.floor(Math.random() * Game.DIM_Y);
-    return [x, y];
+    return new Asteroids.Coord({ x: x, y: y});
   };
 
   Game.prototype.draw = function (ctx, background) {
@@ -78,34 +78,32 @@
     });
   };
 
-  Game.prototype.wrap = function(pos) {
-    var wrappedPos = [];
-
-    if (pos[0] > Game.DIM_X) {
-      wrappedPos.push(pos[0] - Game.DIM_X);
-    } else if (pos[0] < 0) {
-      wrappedPos.push(pos[0] + Game.DIM_X);
+  Game.prototype.wrap = function(delta) {
+    if (delta.x > Game.DIM_X) {
+      var x = (delta.x - Game.DIM_X);
+    } else if (delta.x < 0) {
+      var x = (delta.x + Game.DIM_X);
     } else {
-      wrappedPos.push(pos[0])
+      var x = (delta.x)
     }
 
-    if (pos[1] > Game.DIM_Y) {
-      wrappedPos.push(pos[1] - Game.DIM_Y);
-    } else if (pos[1] < 0) {
-      wrappedPos.push(pos[1] + Game.DIM_Y);
+    if (delta.y > Game.DIM_Y) {
+      var y = (delta.y - Game.DIM_Y);
+    } else if (delta.y < 0) {
+      var y = (delta.y + Game.DIM_Y);
     } else {
-      wrappedPos.push(pos[1])
+      var y = (delta.y)
     }
 
-    return wrappedPos;
+    return new Asteroids.Coord({ x: x, y: y});
   };
 
   Game.prototype.checkCollisions = function () {
     var objects = this.allObjects();
     var remaining = objects.length;
-    var collidedObjects = [];
 
     for (var i = 0; i < remaining; i++) {
+      var collidedObjects = [];
       for (var j = 0; j < remaining; j++) {
         if (i !== j && objects[i].isCollidedWith(objects[j])) {
           objects[i].collideWith(objects[j]);
@@ -117,9 +115,9 @@
   };
 
   Game.prototype.isOutOfBounds = function (pos) {
-    if (pos[0] > Game.DIM_X || pos[0] < 0) {
+    if (pos.x > Game.DIM_X || pos.x < 0) {
       return true;
-    } else if (pos[1] > Game.DIM_Y || pos[1] < 0) {
+    } else if (pos.y > Game.DIM_Y || pos.y < 0) {
       return true;
     }
     return false;

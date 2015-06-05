@@ -6,7 +6,7 @@
 
 
   var Asteroid = Asteroids.Asteroid = function (options) {
-    var vel = Asteroids.Utils.randVector(2); // Pass in length later
+    var vel = Asteroids.Utils.randVector(2);
 
     Asteroids.MovingObject.call( this, {
       pos: options.pos,

@@ -6,14 +6,15 @@
 
   var Bullet = Asteroids.Bullet = function (options) {
 
-    Asteroids.MovingObject.call(this, {
-      pos: options.pos,
-      vel: options.vel,
-      radius: Bullet.RADIUS,
-      color: Bullet.COLOR,
-      game: options.game
-    });
-
+    // Asteroids.MovingObject.call(this, {
+    //   pos: options.pos,
+    //   vel: options.vel,
+    // });
+    this.pos = options.pos;
+    this.vel = options.vel
+    this.radius = Bullet.RADIUS;
+    this.color = Bullet.COLOR;
+    this.game = options.game;
     this.isWrappable = false;
     this.game.add(this);
   }

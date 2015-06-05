@@ -43,6 +43,10 @@
     }).bind(this), 1000 / 60)
   };
 
+  GameView.prototype.end = function () {
+    // this.game = null;
+  };
+
   // GameView.prototype.captureMouse = function () {
   //
   // };

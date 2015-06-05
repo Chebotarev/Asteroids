@@ -14,9 +14,12 @@
   };
 
   Utils.randVector = function (length) {
-    var normX = (Math.random() * 2) - 1;
-    var normY = (Math.random() > 0.5 ? -1 : 1) * Math.sqrt(1 - (normX * normX));
-
-    return [normX * length, normY * length];
+    //
+    // var normX = (Math.random() * 2) - 1;
+    // var normY = (Math.random() > 0.5 ? -1 : 1) * Math.sqrt(1 - (normX * normX));
+    //
+    // return [normX * length, normY * length];
+    var randTheta = (Math.random() > 0.5 ? -1 : 1) * Math.random() * Math.PI;
+    return new Asteroids.Coord({ radius: length, theta: randTheta });
   };
 })();

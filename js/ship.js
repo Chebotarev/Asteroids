@@ -6,7 +6,7 @@
   var Ship = Asteroids.Ship = function (options) {
     Asteroids.MovingObject.call(this, {
       pos: options.pos,
-      vel: [0, 0],
+      vel: new Asteroids.Coord({ x: 0, y: 0}),
       radius: Ship.RADIUS,
       color: Ship.COLOR,
       game: options.game
@@ -19,8 +19,8 @@
   Asteroids.Utils.inherits(Ship, Asteroids.MovingObject);
 
   Ship.prototype.draw = function (ctx) {
-    var x = this.pos[0];
-    var y = this.pos[1];
+    var x = this.pos.x;
+    var y = this.pos.y;
     ctx.fillStyle = this.color;
     ctx.beginPath();
 
@@ -35,27 +35,23 @@
 
   Ship.prototype.relocate = function() {
     this.pos = this.game.randomPosition();
-    this.vel = [0, 0];
+    this.vel = new Asteroids.Coord({ x: 0, y: 0});
   };
 
   Ship.prototype.power = function (impulse) {
-    if (Math.abs(this.vel[0] + impulse[0]) < Asteroids.Game.SPEED_LIMIT) {
-      this.vel[0] += impulse[0];
-    } else {
-      console.log(this.vel[0]);
+    if (Math.abs(this.vel.x + impulse[0]) < Asteroids.Game.SPEED_LIMIT) {
+      this.vel.x += impulse[0];
     }
 
-    if (Math.abs(this.vel[1] + impulse[1]) < Asteroids.Game.SPEED_LIMIT) {
-      this.vel[1] += impulse[1];
-    } else {
-      console.log(this.vel[1]);
+    if (Math.abs(this.vel.y + impulse[1]) < Asteroids.Game.SPEED_LIMIT) {
+      this.vel.y += impulse[1];
     }
   };
 
   Ship.prototype.fireBullet = function () {
     var bullet = new Asteroids.Bullet({
-      pos: this.pos.slice(0, 2),
-      vel: this.vel.slice(0, 2),
+      pos: new Asteroids.Coord({ x: this.pos.x, y: this.pos.y }),
+      vel: new Asteroids.Coord({ x: this.vel.x, y: this.vel.y }),
       game: this.game
     });
 

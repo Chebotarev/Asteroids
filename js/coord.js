@@ -8,35 +8,39 @@
       this.x = options.x;
       this.y = options.y;
 
-      this.radius = this.calcRadius();
-      this.theta = this.calcTheta();
+      this.radius = this.calcRadius(options.x, options.y);
+      this.theta = this.calcTheta(options.x, options.y, this.radius);
     } else if (options.radius !== undefined && options.theta !== undefined) {
       this.radius = options.radius;
       this.theta = options.theta;
 
-      this.x = this.calcRect()[0];
-      this.y = this.calcRect()[1];
+      var rectCoords = this.calcRect(options.radius, options.theta);
+      this.x = rectCoords[0];
+      this.y = rectCoords[1];
     } else {
       throw "Invalid Coordinate Arguments!";
     }
   };
 
-  Coord.prototype.calcRadius = function () {
-    return ((this.x * this.x) + (this.y * this.y));
+  Coord.prototype.add = function (otherCoord) {
+    var x = this.x + otherCoord.x;
+    var y = this.y + otherCoord.y;
+
+    return new Asteroids.Coord({ x: x, y: y });
   };
 
-  Coord.prototype.calcRect = function () {
+  Coord.prototype.calcRadius = function (x, y) {
+    return Math.sqrt((x * x) + (y * y));
+  };
+
+  Coord.prototype.calcRect = function (radius, theta) {
     return ([
-      this.radius * Math.sin(this.theta),
-      this.radius * Math.cos(this.theta)
+      (radius * Math.cos(theta)),
+      (radius * Math.sin(theta))
     ]);
   };
 
-  Coord.prototype.calcTheta = function () {
-    if (this.radius === 0) {
-      return 0;
-    } else {
-      return (Math.asin(this.x / this.radius));
-    }
+  Coord.prototype.calcTheta = function (x, y, radius) {
+    return (Math.atan2(y, x));
   };
 })();
